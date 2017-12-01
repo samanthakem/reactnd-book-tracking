@@ -13,12 +13,15 @@ class Search extends Component {
   search = (query) => {
     if (query) {
       BooksAPI.search(query.trim()).then(response => {
+        let books
         if (Array.isArray(response)) {
-          let books = response.map((book) => {
+          books = response.map((book) => {
             return this.syncShelf(book)
           })
-          this.setState({ books })
+        } else {
+          books = []
         }
+        this.setState({ books })
       })
     } else {
       this.setState({books: []});

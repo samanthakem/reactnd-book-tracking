@@ -10,14 +10,17 @@ class ListBooks extends Component {
 
     const shelfs = [
       {
+        id: 0,
         title: "Currently Reading",
         type: "currentlyReading"
       },
       {
+        id: 1,
         title: "Want to Read",
         type: "wantToRead"
       },
       {
+        id: 2,
         title: "Read",
         type: "read"
       }
@@ -30,8 +33,8 @@ class ListBooks extends Component {
         </div>
         <div className="list-books-content">
           {shelfs.map(
-            (bookshelf, index) => 
-              <div key={index}> 
+            (bookshelf) =>
+              <div key={bookshelf.id}> 
                 <Bookshelf 
                   title={bookshelf.title} 
                   books={books.filter((book) => book.shelf === bookshelf.type)}
